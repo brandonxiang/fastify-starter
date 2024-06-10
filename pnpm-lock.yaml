@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^17.0.5
     version: 17.0.45
   '@types/uuid':
-    specifier: ^8.3.4
-    version: 8.3.4
+    specifier: ^9.0.8
+    version: 9.0.8
   '@typescript-eslint/eslint-plugin':
     specifier: ^3.0.2
     version: 3.10.1(@typescript-eslint/parser@3.10.1)(eslint@7.32.0)(typescript@4.8.4)
@@ -225,8 +225,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: true
 
-  /@types/uuid@8.3.4:
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
+  /@types/uuid@9.0.8:
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@3.10.1(@typescript-eslint/parser@3.10.1)(eslint@7.32.0)(typescript@4.8.4):
