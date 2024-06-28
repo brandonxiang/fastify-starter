@@ -22,7 +22,7 @@ export default class BasicModel<T> {
   }
 
   async query(condition: Partial<T>): Promise<T[]> {
-    return this.queryBuilder.where(condition).orderBy('id', 'desc').select("*");
+    return this.queryBuilder.where(condition).orderBy('id', 'desc').select('*');
   }
 
   async queryAll(): Promise<T[]> {

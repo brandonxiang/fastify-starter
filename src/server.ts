@@ -15,7 +15,7 @@ server.register(cors, {
 });
 
 server.get('/', (req, res) => {
-  res.status(200).send('welcome to sma');
+  res.status(200).send('welcome to fastify-starter');
 });
 
 server.register(HelloRouter, { prefix: '/hello' });
@@ -23,7 +23,7 @@ server.register(HelloRouter, { prefix: '/hello' });
 const port = PORT ? +PORT : 31303;
 console.log('process.env.PORT', PORT, port);
 
-server.listen(port, '0.0.0.0', (err, address) => {
+server.listen({host: '0.0.0.0', port}, (err, address) => {
   if (err) {
     console.error(err);
     process.exit(0);
