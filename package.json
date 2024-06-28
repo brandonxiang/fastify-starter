@@ -28,7 +28,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.7",
     "typescript": "^5.5.2",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
