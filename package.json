@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "8.5.0",
+    "@fastify/cors": "9.0.1",
     "dayjs": "^1.11.11",
     "fastify": "4.28.0",
     "ioredis": "^4.28.5",
