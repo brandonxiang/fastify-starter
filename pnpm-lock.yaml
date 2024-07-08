@@ -18,8 +18,8 @@ dependencies:
     specifier: ^4.28.5
     version: 4.28.5
   knex:
-    specifier: ^1.0.7
-    version: 1.0.7(mysql@2.18.1)
+    specifier: ^3.1.0
+    version: 3.1.0(mysql@2.18.1)
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -959,19 +959,19 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
-  /colorette@2.0.16:
-    resolution: {integrity: sha512-hUewv7oMjCp+wkBv5Rm0v87eJhq4woh5rSR+42YSQJKecCqgIqNkZ6lAlQms/BwHPJA5NKMRlpxPRv0n8HQW6g==}
+  /colorette@2.0.19:
+    resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
+    dev: false
+
+  /commander@10.0.1:
+    resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
+    engines: {node: '>=14'}
     dev: false
 
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
     dev: true
-
-  /commander@9.4.1:
-    resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
-    engines: {node: ^12.20.0 || >=14}
-    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -1629,21 +1629,19 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /knex@1.0.7(mysql@2.18.1):
-    resolution: {integrity: sha512-89jxuRATt4qJMb9ZyyaKBy0pQ4d5h7eOFRqiNFnUvsgU+9WZ2eIaZKrAPG1+F3mgu5UloPUnkVE5Yo2sKZUs6Q==}
-    engines: {node: '>=12'}
+  /knex@3.1.0(mysql@2.18.1):
+    resolution: {integrity: sha512-GLoII6hR0c4ti243gMs5/1Rb3B+AjwMOfjYm97pu0FOQa7JH56hgBxYf5WK2525ceSbBY1cjeZ9yk99GPMB6Kw==}
+    engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
-      '@vscode/sqlite3': '*'
       better-sqlite3: '*'
       mysql: '*'
       mysql2: '*'
       pg: '*'
       pg-native: '*'
+      sqlite3: '*'
       tedious: '*'
     peerDependenciesMeta:
-      '@vscode/sqlite3':
-        optional: true
       better-sqlite3:
         optional: true
       mysql:
@@ -1654,11 +1652,13 @@ packages:
         optional: true
       pg-native:
         optional: true
+      sqlite3:
+        optional: true
       tedious:
         optional: true
     dependencies:
-      colorette: 2.0.16
-      commander: 9.4.1
+      colorette: 2.0.19
+      commander: 10.0.1
       debug: 4.3.4
       escalade: 3.1.1
       esm: 3.2.25
@@ -1667,7 +1667,7 @@ packages:
       interpret: 2.2.0
       lodash: 4.17.21
       mysql: 2.18.1
-      pg-connection-string: 2.5.0
+      pg-connection-string: 2.6.2
       rechoir: 0.8.0
       resolve-from: 5.0.0
       tarn: 3.0.2
@@ -1925,8 +1925,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /pg-connection-string@2.5.0:
-    resolution: {integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==}
+  /pg-connection-string@2.6.2:
+    resolution: {integrity: sha512-ch6OwaeaPYcova4kKZ15sbJ2hKb/VP48ZD2gE7i1J+L4MspCtBMAx8nMgz7bksc7IojCIIWuEhHibSMFH8m8oA==}
     dev: false
 
   /picomatch@2.3.1:
