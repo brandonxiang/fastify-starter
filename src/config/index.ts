@@ -6,7 +6,7 @@ const { APP_REGION = 'sg', APP_ENV = 'dev' } = process.env;
 console.log('APP_REGION', APP_REGION);
 console.log('APP_ENV', APP_ENV);
 
-const defaultConfig = require(`./${APP_REGION}/default`).default;
+const defaultConfig = import(`./${APP_REGION}/default`).then(module => module.default);
 let destConfig: Config | null = null;
 
 export const getConfig = (): Config => {
@@ -14,24 +14,23 @@ export const getConfig = (): Config => {
     return destConfig;
   }
   if (APP_ENV === 'pretest') {
-    const testConfig = require(`./${APP_REGION}/pretest`).default;
+    const testConfig = import(`./${APP_REGION}/pretest`).then(module => module.default);
     destConfig = _.defaultsDeep(testConfig, defaultConfig);
   } else if (APP_ENV === 'test') {
-    const testConfig = require(`./${APP_REGION}/test`).default;
+    const testConfig = import(`./${APP_REGION}/test`).then(module => module.default);
     destConfig = _.defaultsDeep(testConfig, defaultConfig);
   } else if (APP_ENV === 'staging') {
-    const stagingConfig = require(`./${APP_REGION}/staging`).default;
+    const stagingConfig = import(`./${APP_REGION}/staging`).then(module => module.default);
     destConfig = _.defaultsDeep(stagingConfig, defaultConfig);
   } else if (APP_ENV === 'uat') {
-    const uatConfig = require(`./${APP_REGION}/uat`).default;
+    const uatConfig = import(`./${APP_REGION}/uat`).then(module => module.default);
     destConfig = _.defaultsDeep(uatConfig, defaultConfig);
   } else if (APP_ENV === 'live') {
-    const liveConfig = require(`./${APP_REGION}/live`).default;
+    const liveConfig = import(`./${APP_REGION}/live`).then(module => module.default);
     destConfig = _.defaultsDeep(liveConfig, defaultConfig);
   }
 
   console.log('CONFIG => ', destConfig || defaultConfig);
   return destConfig || defaultConfig;
 };
-
 export default {};

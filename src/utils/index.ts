@@ -21,6 +21,7 @@ export const parseJson = (obj?: string) => {
   try {
     return JSON.parse(obj);
   } catch (error) {
+    console.log(error);
     return undefined;
   }
 };

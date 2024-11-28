@@ -1,4 +1,10 @@
-# Awesome Starter
+<p align="center">
+  <a href="https://github.com/brandonxiang/fastify-starter">
+    <img src="https://brandonxiang.top/icon/vite-template.jpeg" width="150px" alt="Template Logo" />
+  </a>
+</p>
+
+# Fastify Starter 😄
 
 ## Why do you use this template
 
@@ -6,8 +12,11 @@ This template is a simplest solution to start up an http server.
 
 ## What is the key web framework for this template
 
-- [fasity](https://fastify.dev/)
+- [Fasity](https://fastify.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Knex](https://knexjs.org/)
+- [Mysql](https://github.com/mysqljs/mysql)
+- [IORedis](https://github.com/luin/ioredis)
 
 ## Start Up
 
@@ -41,3 +50,9 @@ pnpm run dev
 # live
 pnpm run build
 ```
+
+## Project Management
+
+- [husky](https://typicode.github.io/husky/)
+- [lint-staged](https://github.com/lint-staged/lint-staged)
+- [eslint 9](https://eslint.org/)

@@ -1,6 +1,6 @@
 {
   "name": "fastify-starter",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "type": "module",
   "main": "dist/server.js",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@fastify/cors": "10.0.1",
     "dayjs": "^1.11.13",
-    "fastify": "5.0.0",
+    "fastify": "5.1.0",
     "ioredis": "^5.4.1",
     "knex": "^3.1.0",
     "lodash": "^4.17.21",
@@ -27,18 +27,18 @@
     "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.12.0",
-    "@stylistic/eslint-plugin-ts": "^2.9.0",
+    "@eslint/js": "^9.15.0",
+    "@stylistic/eslint-plugin-ts": "^2.11.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/lodash": "^4.17.10",
-    "@types/node": "^22.7.5",
+    "@types/lodash": "^4.17.13",
+    "@types/node": "^22.10.0",
     "@types/uuid": "^10.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "^9.12.0",
+    "eslint": "^9.15.0",
     "rimraf": "^6.0.1",
-    "tsup": "^8.3.0",
-    "typescript": "^5.6.3",
-    "typescript-eslint": "^8.8.1"
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0"
   },
   "pnpm": {
     "overrides": {

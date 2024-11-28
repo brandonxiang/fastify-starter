@@ -1,4 +1,4 @@
-import IORedis, { KeyType } from 'ioredis';
+import IORedis, { RedisKey } from 'ioredis';
 import { getConfig } from '../config';
 
 const config = getConfig();
@@ -33,7 +33,7 @@ export async function hget(key: string, filed: string) {
   return redis.hget(key, filed);
 }
 
-export async function hmget(key: KeyType, ...fields: string[]) {
+export async function hmget(key: RedisKey, ...fields: string[]) {
   return redis.hmget(key, ...fields);
 }
 
