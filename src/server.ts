@@ -14,7 +14,14 @@ const __dirname = path.dirname(__filename);
 const { PORT } = process.env;
 
 const server = Fastify({
-  logger: true,
+  logger: {
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        colorize: true
+      }
+    }
+  },
 });
 
 server.register(cors, {
