@@ -1,15 +1,13 @@
 import dayjs from 'dayjs';
 import knex, { Knex } from 'knex';
-import { getConfig } from '../config';
-
-const config = getConfig();
+import { config } from '../config/index.js';
 
 export const KnexInstance = knex({
   client: 'mysql',
-  connection: config.mysql,
+  connection: config.database,
 });
 
-export default class BasicModel<T> {
+export default class BasicModel<T extends Record<string, any>> {
   private builder: Knex.QueryBuilder;
   protected knex = KnexInstance;
 

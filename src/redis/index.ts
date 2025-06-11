@@ -1,30 +1,17 @@
 import IORedis, { RedisKey } from 'ioredis';
-import { getConfig } from '../config';
-
-const config = getConfig();
+import { config } from '../config/index.js';
 
 function initRedis() {
-  // 如果提供了多个地址, 使用Redis Cluster
-  if (config.redis.cluster.length > 1) {
-    return new IORedis.Cluster(config.redis.cluster, {
-      scaleReads: 'slave',
-      dnsLookup: (address: string, callback: any) => {
-        console.log('redis dnsLookup log', address);
-        callback(null, address);
-      },
-      redisOptions: {
-        password: config.redis.password,
-      },
-    });
+  const redisOptions: any = {
+    host: config.redis.host,
+    port: config.redis.port,
+  };
+
+  if (config.redis.password) {
+    redisOptions.password = config.redis.password;
   }
 
-  console.log(`config.redis.cluster[0]: ${config.redis.cluster[0]}`);
-
-  // 如果只提供了一个地址, 不使用Cluster
-  return new IORedis({
-    ...config.redis.cluster[0],
-    password: config.redis.password,
-  });
+  return new IORedis(redisOptions);
 }
 
 const redis = initRedis();
@@ -55,6 +42,7 @@ export function hmset(key: string, sets: Record<string, string | Record<string, 
   if (args.length) {
     return redis.hmset(key, ...args);
   }
+  return Promise.resolve('OK');
 }
 
 export async function hkeys(key: string) {
@@ -65,6 +53,7 @@ export function hdel(key: string, fields: string[]) {
   if (fields.length) {
     return redis.hdel(key, ...fields);
   }
+  return Promise.resolve(0);
 }
 
 export async function setex(key: string, seconds: number, value: string | Record<string, any> | Buffer) {
