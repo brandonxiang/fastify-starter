@@ -42,7 +42,7 @@
     "@fastify/swagger": "^9.5.1",
     "@fastify/swagger-ui": "^5.2.3",
     "dayjs": "^1.11.13",
-    "fastify": "^5.3.3",
+    "fastify": "^5.4.0",
     "ioredis": "^5.6.1",
     "knex": "^3.1.0",
     "lodash": "^4.17.21",
@@ -51,16 +51,16 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.28.0",
+    "@eslint/js": "^9.31.0",
     "@stylistic/eslint-plugin-ts": "^4.4.1",
-    "@types/lodash": "^4.17.17",
+    "@types/lodash": "^4.17.20",
     "@types/node": "^24.0.0",
     "@types/uuid": "^10.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "^9.28.0",
+    "eslint": "^9.31.0",
     "rimraf": "^6.0.1",
-    "tsdown": "^0.12.7",
+    "tsdown": "^0.12.9",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.0"
+    "typescript-eslint": "^8.37.0"
   }
 }
