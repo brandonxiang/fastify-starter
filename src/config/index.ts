@@ -45,19 +45,19 @@ const getConfig = (): AppConfig => {
     PORT = '31303',
     HOST = '0.0.0.0',
     APP_REGION = 'sg',
-    
+
     // Database
     DB_HOST = 'localhost',
     DB_PORT = '3306',
     DB_USER = 'root',
     DB_PASSWORD = '',
     DB_DATABASE = 'fastify_starter',
-    
+
     // Redis
     REDIS_HOST = 'localhost',
     REDIS_PORT = '6379',
     REDIS_PASSWORD,
-    
+
     // CORS
     CORS_ORIGIN = '',
   } = process.env;
@@ -66,38 +66,34 @@ const getConfig = (): AppConfig => {
   const isDevelopment = NODE_ENV === 'development';
 
   // Parse CORS origins
-  const corsOrigins = CORS_ORIGIN
-    ? CORS_ORIGIN.split(',').map(origin => origin.trim())
-    : [];
+  const corsOrigins = CORS_ORIGIN ? CORS_ORIGIN.split(',').map((origin) => origin.trim()) : [];
 
   return {
     port: parseInt(PORT, 10),
     host: HOST,
     nodeEnv: NODE_ENV,
     appRegion: APP_REGION,
-    
+
     cors: {
-      origin: isProduction && corsOrigins.length > 0 
-        ? corsOrigins 
-        : isDevelopment,
+      origin: isProduction && corsOrigins.length > 0 ? corsOrigins : isDevelopment,
       credentials: true,
     },
-    
+
     swagger: {
       enabled: !isProduction,
       routePrefix: '/docs',
     },
-    
+
     logging: {
       level: isProduction ? 'warn' : 'info',
       prettyPrint: isDevelopment,
     },
-    
+
     static: {
       root: path.join(__dirname, '..', '..', 'public'),
       prefix: '/public/',
     },
-    
+
     database: {
       host: DB_HOST,
       port: parseInt(DB_PORT, 10),
@@ -105,7 +101,7 @@ const getConfig = (): AppConfig => {
       password: DB_PASSWORD,
       database: DB_DATABASE,
     },
-    
+
     redis: {
       host: REDIS_HOST,
       port: parseInt(REDIS_PORT, 10),
@@ -116,4 +112,4 @@ const getConfig = (): AppConfig => {
 
 export const config = getConfig();
 
-export default config; 
+export default config;

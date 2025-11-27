@@ -12,19 +12,22 @@ const { PORT = 31303, NODE_ENV = 'development' } = process.env;
 
 // Create Fastify instance with optimized settings
 const server = Fastify({
-  logger: NODE_ENV === 'development' ? {
-    level: 'info',
-    transport: {
-      target: 'pino-pretty',
-      options: {
-        colorize: true,
-        translateTime: 'HH:MM:ss Z',
-        ignore: 'pid,hostname'
-      }
-    }
-  } : {
-    level: 'warn'
-  },
+  logger:
+    NODE_ENV === 'development'
+      ? {
+          level: 'info',
+          transport: {
+            target: 'pino-pretty',
+            options: {
+              colorize: true,
+              translateTime: 'HH:MM:ss Z',
+              ignore: 'pid,hostname',
+            },
+          },
+        }
+      : {
+          level: 'warn',
+        },
   // Improved request handling
   requestTimeout: 30000,
   keepAliveTimeout: 5000,
@@ -51,9 +54,10 @@ const buildServer = async () => {
   try {
     // CORS configuration
     await server.register(cors, {
-      origin: NODE_ENV === 'production' 
-        ? ['https://yourdomain.com'] // Replace with your actual domain
-        : true, // Allow all origins in development
+      origin:
+        NODE_ENV === 'production'
+          ? ['https://yourdomain.com'] // Replace with your actual domain
+          : true, // Allow all origins in development
       methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
       credentials: true,
     });
@@ -102,46 +106,56 @@ const buildServer = async () => {
     });
 
     // Health check endpoint
-    server.get('/health', {
-      schema: {
-        description: 'Health check endpoint',
-        tags: ['health'],
-        response: {
-          200: {
-            type: 'object',
-            properties: {
-              status: { type: 'string' },
-              timestamp: { type: 'number' },
-              uptime: { type: 'number' },
+    server.get(
+      '/health',
+      {
+        schema: {
+          description: 'Health check endpoint',
+          tags: ['health'],
+          response: {
+            200: {
+              type: 'object',
+              properties: {
+                status: { type: 'string' },
+                timestamp: { type: 'number' },
+                uptime: { type: 'number' },
+              },
             },
           },
         },
       },
-    }, async (_request, reply) => reply.status(200).send({
-      status: 'ok',
-      timestamp: Date.now(),
-      uptime: process.uptime(),
-    }));
+      async (_request, reply) =>
+        reply.status(200).send({
+          status: 'ok',
+          timestamp: Date.now(),
+          uptime: process.uptime(),
+        }),
+    );
 
     // Root endpoint
-    server.get('/', {
-      schema: {
-        description: 'Welcome message',
-        tags: ['root'],
-        response: {
-          200: {
-            type: 'object',
-            properties: {
-              message: { type: 'string' },
-              version: { type: 'string' },
+    server.get(
+      '/',
+      {
+        schema: {
+          description: 'Welcome message',
+          tags: ['root'],
+          response: {
+            200: {
+              type: 'object',
+              properties: {
+                message: { type: 'string' },
+                version: { type: 'string' },
+              },
             },
           },
         },
       },
-    }, async (_request, reply) => reply.status(200).send({
-      message: 'Welcome to Fastify Starter!',
-      version: '1.0.0',
-    }));
+      async (_request, reply) =>
+        reply.status(200).send({
+          message: 'Welcome to Fastify Starter!',
+          version: '1.0.0',
+        }),
+    );
 
     // Register route modules
     await server.register(HelloRouter, { prefix: '/api/hello' });
@@ -149,7 +163,7 @@ const buildServer = async () => {
     // Error handler
     server.setErrorHandler(async (error, request, reply) => {
       server.log.error(error);
-      
+
       if (reply.statusCode < 400) {
         reply.status(500);
       }
@@ -165,14 +179,16 @@ const buildServer = async () => {
     });
 
     // 404 handler
-    server.setNotFoundHandler(async (request, reply) => reply.status(404).send({
-      error: {
-        message: 'Route not found',
-        statusCode: 404,
-        timestamp: new Date().toISOString(),
-        path: request.url,
-      },
-    }));
+    server.setNotFoundHandler(async (request, reply) =>
+      reply.status(404).send({
+        error: {
+          message: 'Route not found',
+          statusCode: 404,
+          timestamp: new Date().toISOString(),
+          path: request.url,
+        },
+      }),
+    );
 
     return server;
   } catch (err) {
@@ -186,7 +202,7 @@ const buildServer = async () => {
 const start = async () => {
   try {
     const app = await buildServer();
-    
+
     const address = await app.listen({
       host: '0.0.0.0',
       port: Number(PORT),
@@ -194,11 +210,10 @@ const start = async () => {
 
     app.log.info(`🚀 Server listening at ${address}`);
     app.log.info(`📚 Documentation available at ${address}/docs`);
-    
+
     // Ready for requests
     await app.ready();
     app.swagger();
-    
   } catch (err) {
     console.error('Failed to start server:', err);
     server.log.error('Failed to start server:', err);
