@@ -16,7 +16,9 @@
     "type-check": "tsc --noEmit",
     "lint": "oxlint --fix",
     "format": "oxfmt",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "deps:check": "pnpm outdated",
     "deps:update": "pnpm update"
   },
@@ -50,15 +52,17 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "oxfmt": "^0.15.0",
-    "oxlint": "^1.30.0",
     "@types/lodash": "^4.17.21",
     "@types/node": "^24.10.1",
     "@types/uuid": "^10.0.0",
+    "@vitest/coverage-v8": "^4.0.14",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
+    "oxfmt": "^0.15.0",
+    "oxlint": "^1.30.0",
     "rimraf": "^6.1.2",
     "tsdown": "^0.16.7",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.14"
   }
 }
