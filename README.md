@@ -1,12 +1,21 @@
+# Fastify Starter 🚀
+
 <p align="center">
   <a href="https://github.com/brandonxiang/fastify-starter">
     <img src="https://brandonxiang.top/icon/vite-template.jpeg" width="150px" alt="Template Logo" />
   </a>
 </p>
 
-# Fastify Starter 🚀
+A modern Fastify starter template powered by **Vite+**, built with TypeScript and industry best practices.
 
-A modern Fastify starter template with TypeScript, latest conventions, and best practices.
+## Vite+ Powered
+
+This project uses [Vite+](https://vite-plus.dev) - the unified toolchain for the web, providing:
+
+- ⚡ **Lightning Fast** - Powered by Rolldown and Vite
+- 🔧 **All-in-One** - Type checking, linting, formatting in one command
+- 🚀 **Zero Config** - Sensible defaults with full customization
+- 📦 **Smart Dependencies** - Automatic package management via `vp`
 
 ## Features
 
@@ -67,7 +76,7 @@ A modern Fastify starter template with TypeScript, latest conventions, and best 
 | Script                  | Description                                      |
 | ----------------------- | ------------------------------------------------ |
 | `pnpm run dev`          | Start development server with hot reload         |
-| `pnpm run build`        | Build for production with tree-shaking          |
+| `pnpm run build`        | Build for production with tree-shaking           |
 | `pnpm run build:dev`    | Build for development                            |
 | `pnpm start`            | Start production server                          |
 | `pnpm run start:prod`   | Start production server with NODE_ENV=production |
@@ -170,12 +179,14 @@ const helloWorldSchema = {
   querystring: {
     type: 'object',
     properties: {
-      name: { type: 'string', description: 'Name to greet' }
-    }
+      name: { type: 'string', description: 'Name to greet' },
+    },
   },
   response: {
-    200: { /* response schema */ }
-  }
+    200: {
+      /* response schema */
+    },
+  },
 } as const;
 ```
 
@@ -186,11 +197,15 @@ interface HelloWorldQuery {
   name?: string;
 }
 
-fastify.get<{ Querystring: HelloWorldQuery }>('/world', {
-  schema: helloWorldSchema
-}, async (request, reply) => {
-  const { name = 'World' } = request.query; // Fully typed
-});
+fastify.get<{ Querystring: HelloWorldQuery }>(
+  '/world',
+  {
+    schema: helloWorldSchema,
+  },
+  async (request, reply) => {
+    const { name = 'World' } = request.query; // Fully typed
+  },
+);
 ```
 
 ### 4. Error Handling
@@ -203,8 +218,8 @@ server.setErrorHandler(async (error, request, reply) => {
       message: error.message,
       statusCode: reply.statusCode,
       timestamp: new Date().toISOString(),
-      path: request.url
-    }
+      path: request.url,
+    },
   });
 });
 ```
@@ -261,7 +276,7 @@ import { config } from '../config/index.js';
 const redis = new IORedis({
   host: config.redis.host,
   port: config.redis.port,
-  ...(config.redis.password && { password: config.redis.password })
+  ...(config.redis.password && { password: config.redis.password }),
 });
 
 export async function hget(key: string, field: string) {

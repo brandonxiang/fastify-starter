@@ -41,7 +41,7 @@ const gracefulShutdown = async (signal: string) => {
     await server.close();
     process.exit(0);
   } catch (err) {
-    server.log.error('Error during shutdown:', err);
+    server.log.error({ err }, 'Error during shutdown');
     process.exit(1);
   }
 };
@@ -162,15 +162,17 @@ const buildServer = async () => {
 
     // Error handler
     server.setErrorHandler(async (error, request, reply) => {
-      server.log.error(error);
+      server.log.error({ err: error }, 'Request error');
 
       if (reply.statusCode < 400) {
         reply.status(500);
       }
 
+      const message = error instanceof Error ? error.message : String(error);
+
       return reply.send({
         error: {
-          message: error.message,
+          message,
           statusCode: reply.statusCode,
           timestamp: new Date().toISOString(),
           path: request.url,
@@ -193,7 +195,7 @@ const buildServer = async () => {
     return server;
   } catch (err) {
     console.error('Failed to build server:', err);
-    server.log.error('Failed to build server:', err);
+    server.log.error({ err }, 'Failed to build server');
     throw err;
   }
 };
@@ -216,7 +218,7 @@ const start = async () => {
     app.swagger();
   } catch (err) {
     console.error('Failed to start server:', err);
-    server.log.error('Failed to start server:', err);
+    server.log.error({ err }, 'Failed to start server');
     process.exit(1);
   }
 };

@@ -2,67 +2,68 @@
   "name": "fastify-starter",
   "version": "1.0.0",
   "description": "Modern Fastify starter template with TypeScript and latest conventions",
-  "type": "module",
-  "main": "dist/server.js",
-  "scripts": {
-    "dev": "APP_REGION=sg APP_ENV=development tsdown --watch --on-success \"pnpm run start:dev\"",
-    "start:dev": "sleep 3 && APP_REGION=sg APP_ENV=development node ./dist/server.js",
-    "start": "node ./dist/server.js",
-    "start:prod": "NODE_ENV=production node ./dist/server.js",
-    "build": "NODE_ENV=production tsdown",
-    "build:dev": "tsdown",
-    "compile-schemas": "json2ts -i src/schemas -o src/types",
-    "clean": "rimraf .tmp dist .tsbuildinfo",
-    "type-check": "tsc --noEmit",
-    "lint": "oxlint --fix",
-    "format": "oxfmt",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "deps:check": "pnpm outdated",
-    "deps:update": "pnpm update"
-  },
   "keywords": [
     "fastify",
-    "typescript",
-    "rest-api",
+    "modern",
     "nodejs",
+    "rest-api",
     "starter",
-    "modern"
+    "typescript"
   ],
-  "author": "",
   "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/server.mjs",
+  "scripts": {
+    "dev": "APP_REGION=sg APP_ENV=development vp pack --watch --on-success \"pnpm run start:dev\"",
+    "start:dev": "sleep 3 && APP_REGION=sg APP_ENV=development node ./dist/server.mjs",
+    "start": "node ./dist/server.mjs",
+    "start:prod": "NODE_ENV=production node ./dist/server.mjs",
+    "build": "NODE_ENV=production vp pack",
+    "build:dev": "vp pack",
+    "compile-schemas": "json2ts -i src/schemas -o src/types",
+    "type-check": "tsc --noEmit",
+    "lint": "vp lint --fix",
+    "format": "vp fmt",
+    "test": "vp test run",
+    "test:watch": "vp test",
+    "test:coverage": "vp test run --coverage",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^6.3.1",
+    "@fastify/cors": "^11.2.0",
+    "@fastify/static": "^9.0.0",
+    "@fastify/swagger": "^9.7.0",
+    "@fastify/swagger-ui": "^5.2.5",
+    "dayjs": "^1.11.20",
+    "fastify": "^5.8.2",
+    "ioredis": "^5.10.0",
+    "knex": "^3.1.0",
+    "lodash": "^4.17.23",
+    "mysql": "^2.18.1",
+    "pino-pretty": "^13.1.3",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.24",
+    "@types/node": "^25.5.0",
+    "@types/uuid": "^10.0.0",
+    "@vitest/coverage-v8": "^4.1.0",
+    "cross-env": "^10.1.0",
+    "typescript": "^5.9.3",
+    "vite-plus": "latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+  },
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
   },
-  "dependencies": {
-    "@fastify/autoload": "^6.3.1",
-    "@fastify/cors": "^11.1.0",
-    "@fastify/static": "^8.3.0",
-    "@fastify/swagger": "^9.6.1",
-    "@fastify/swagger-ui": "^5.2.3",
-    "dayjs": "^1.11.19",
-    "fastify": "^5.6.2",
-    "ioredis": "^5.8.2",
-    "knex": "^3.1.0",
-    "lodash": "^4.17.21",
-    "mysql": "^2.18.1",
-    "pino-pretty": "^13.1.2",
-    "uuid": "^13.0.0"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.17.21",
-    "@types/node": "^24.10.1",
-    "@types/uuid": "^10.0.0",
-    "@vitest/coverage-v8": "^4.0.14",
-    "concurrently": "^9.2.1",
-    "cross-env": "^10.1.0",
-    "oxfmt": "^0.15.0",
-    "oxlint": "^1.30.0",
-    "rimraf": "^6.1.2",
-    "tsdown": "^0.16.7",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.14"
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }
