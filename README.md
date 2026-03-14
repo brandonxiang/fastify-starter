@@ -28,15 +28,15 @@ This project uses [Vite+](https://vite-plus.dev) - the unified toolchain for the
 - 🔗 **Redis Support** - IORedis integration
 - 🛡️ **CORS** - Configurable CORS settings
 - 🧪 **TypeScript Strict Mode** - Enhanced type safety
-- 📦 **Modern Build Tools** - tsdown (powered by Rolldown) for fast builds
-- 🎨 **ESLint + Prettier** - Code formatting and linting
+- 📦 **Vite+ Powered** - Powered by Rolldown, Vitest, Oxlint
+- 🎨 **Code Quality** - Oxlint + Oxfmt for linting and formatting
 - 🚦 **Health Checks** - Built-in health monitoring
 - 🔧 **Graceful Shutdown** - Proper process management
 
 ## Requirements
 
 - Node.js >= 18.0.0
-- pnpm >= 8.0.0
+- Vite+ (install via `npm install -g vite-plus`)
 
 ## Quick Start
 
@@ -50,7 +50,7 @@ This project uses [Vite+](https://vite-plus.dev) - the unified toolchain for the
 2. **Install dependencies**
 
    ```bash
-   pnpm install
+   vp install
    ```
 
 3. **Set up environment variables**
@@ -63,7 +63,7 @@ This project uses [Vite+](https://vite-plus.dev) - the unified toolchain for the
 4. **Start development server**
 
    ```bash
-   pnpm run dev
+   vp dev
    ```
 
 5. **Visit your application**
@@ -73,20 +73,21 @@ This project uses [Vite+](https://vite-plus.dev) - the unified toolchain for the
 
 ## Scripts
 
-| Script                  | Description                                      |
-| ----------------------- | ------------------------------------------------ |
-| `pnpm run dev`          | Start development server with hot reload         |
-| `pnpm run build`        | Build for production with tree-shaking           |
-| `pnpm run build:dev`    | Build for development                            |
-| `pnpm start`            | Start production server                          |
-| `pnpm run start:prod`   | Start production server with NODE_ENV=production |
-| `pnpm run type-check`   | Run TypeScript type checking                     |
-| `pnpm run lint`         | Run ESLint                                       |
-| `pnpm run lint:fix`     | Run ESLint with auto-fix                         |
-| `pnpm run format`       | Format code with Prettier                        |
-| `pnpm run format:check` | Check code formatting                            |
-| `pnpm run deps:check`   | Check for outdated dependencies                  |
-| `pnpm run deps:update`  | Update dependencies                              |
+| Command              | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| `vp dev`             | Start development server with hot reload         |
+| `vp build`           | Build for production with tree-shaking           |
+| `vp run build:dev`   | Build for development                            |
+| `vp run start`       | Start production server                          |
+| `vp run start:prod`  | Start production server with NODE_ENV=production |
+| `vp check`           | Run TypeScript, lint, and format checks          |
+| `vp lint`            | Run ESLint                                       |
+| `vp lint --fix`      | Run ESLint with auto-fix                         |
+| `vp fmt`             | Format code with Oxfmt                           |
+| `vp fmt --check`     | Check code formatting                            |
+| `vp test`            | Run tests                                        |
+| `vp run deps:check`  | Check for outdated dependencies                  |
+| `vp run deps:update` | Update dependencies                              |
 
 ## Project Structure
 
@@ -305,7 +306,7 @@ export async function hget(key: string, field: string) {
 1. **Build the application**
 
    ```bash
-   pnpm run build
+   vp build
    ```
 
 2. **Set production environment**
@@ -317,7 +318,7 @@ export async function hget(key: string, field: string) {
 3. **Start the server**
 
    ```bash
-   pnpm run start:prod
+   vp run start:prod
    ```
 
 ## Best Practices

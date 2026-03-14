@@ -22,6 +22,7 @@
     "build": "NODE_ENV=production vp pack",
     "build:dev": "vp pack",
     "compile-schemas": "json2ts -i src/schemas -o src/types",
+    "check": "vp check",
     "type-check": "tsc --noEmit",
     "lint": "vp lint --fix",
     "format": "vp fmt",
@@ -49,21 +50,13 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.5.0",
     "@types/uuid": "^10.0.0",
-    "@vitest/coverage-v8": "^4.1.0",
     "cross-env": "^10.1.0",
     "typescript": "^5.9.3",
-    "vite-plus": "latest",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    "vite-plus": "latest"
   },
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
   },
-  "packageManager": "pnpm@10.32.1",
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-    }
-  }
+  "packageManager": "pnpm@10.32.1"
 }
